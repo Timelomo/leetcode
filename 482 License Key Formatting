@@ -1,0 +1,41 @@
+'''
+class Solution:
+    def licenseKeyFormatting(self, S, K):
+        """
+        :type S: str
+        :type K: int
+        :rtype: str
+        """
+        s = S.replace('-', '').upper()[::-1]
+        return '-'.join(s[i:i+K] for i in range(0, len(s), K))[::-1]
+
+'''
+
+
+class Solution(object):
+    def licenseKeyFormatting(self, S, K):
+        """
+        :type S: str
+        :type K: int
+        :rtype: str
+        """
+        s = S.upper().replace('-','')[::-1]
+        n = len(s)
+        res = ""
+
+        for i in range(n):
+            if i%K == 0 and i!=0:
+                res = '-'+res
+            res = s[i] + res
+        return res
+
+
+def main():
+    result = Solution().licenseKeyFormatting("5F3Z-2e-9-w", 4)
+    # result = Solution().licenseKeyFormatting(S = "2-5g-3-J", K = 2)
+    print(result)
+    return result
+
+
+if __name__ == "__main__":
+    main()
